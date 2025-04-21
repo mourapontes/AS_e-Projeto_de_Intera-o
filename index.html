@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Título Atualizado -->
+  <title>Análise de Sistemas e Projeto de Interação - Quiz</title>
+  <!-- Font Awesome para Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Link para o CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="carousel-container">
+    <div class="carousel-track" id="track">
+
+      <!-- ========= Slides de Conteúdo: Análise de Sistemas e Projeto de Interação ========= -->
+
+      <div class="slide active">
+        <h1><i class="fas fa-project-diagram"></i> Análise de Sistemas e Projeto de Interação</h1>
+        <p>Entendendo necessidades e criando experiências digitais eficazes.</p>
+        <!-- Botão Iniciar Quiz foi movido para o slide de Conclusão -->
+      </div>
+
+      <div class="slide">
+        <h2><i class="fas fa-search"></i> O que é Análise de Sistemas?</h2>
+        <ul>
+          <li>Processo de estudar um procedimento ou negócio.</li>
+          <li>Objetivo: Identificar metas e criar sistemas para alcançá-las.</li>
+          <li>Foco: Requisitos, processos, dados e fluxos de informação.</li>
+          <li>Essencial para construir a solução certa.</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h2><i class="fas fa-clipboard-list"></i> Levantamento de Requisitos</h2>
+        <ul>
+          <li>Etapa crucial da Análise de Sistemas.</li>
+          <li>Entender o que o sistema <strong>precisa</strong> fazer.</li>
+          <li>Técnicas: Entrevistas, questionários, observação, workshops.</li>
+          <li>Tipos: Funcionais (o que faz) e Não-Funcionais (como faz - performance, segurança).</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h2><i class="fas fa-sitemap"></i> Modelagem de Sistemas (UML)</h2>
+        <ul>
+          <li>Representar visualmente o sistema a ser construído.</li>
+          <li>Facilita a comunicação e o entendimento.</li>
+          <li>Exemplos de Diagramas:
+            <ul>
+              <li>Casos de Uso (interações do usuário)</li>
+              <li>Diagramas de Classes (estrutura)</li>
+              <li>Diagramas de Sequência (fluxo temporal)</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+       <div class="slide">
+        <h2><i class="fas fa-mouse-pointer"></i> O que é Projeto de Interação (IxD)?</h2>
+        <ul>
+          <li>Foco em como o usuário interage com um produto/sistema.</li>
+          <li>Define a estrutura e o comportamento da interface.</li>
+          <li>Objetivo: Criar experiências intuitivas, eficientes e agradáveis.</li>
+          <li>Parte fundamental do Design de Experiência do Usuário (UX).</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h2><i class="fas fa-lightbulb"></i> Princípios de Projeto de Interação</h2>
+        <ul>
+          <li><strong>Usabilidade:</strong> Facilidade de uso e aprendizado.</li>
+          <li><strong>Acessibilidade:</strong> Uso por pessoas com diferentes habilidades.</li>
+          <li><strong>Feedback:</strong> O sistema informa o que está acontecendo.</li>
+          <li><strong>Consistência:</strong> Elementos e ações se comportam de forma similar.</li>
+          <li><strong>Previsibilidade:</strong> O usuário consegue antecipar o resultado de uma ação.</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h2><i class="fas fa-users"></i> Métodos e Técnicas de IxD</h2>
+        <ul>
+          <li><strong>Personas:</strong> Representações fictícias de usuários típicos.</li>
+          <li><strong>Jornadas do Usuário:</strong> Mapeamento dos passos do usuário.</li>
+          <li><strong>Wireframes:</strong> Esboços estruturais de baixa fidelidade.</li>
+          <li><strong>Protótipos:</strong> Versões interativas para teste (baixa/alta fidelidade).</li>
+          <li><strong>Testes de Usabilidade:</strong> Observar usuários reais.</li>
+        </ul>
+      </div>
+
+      <div class="slide">
+        <h2><i class="fas fa-drafting-compass"></i> Wireframes e Protótipos</h2>
+        <ul>
+          <li><strong>Wireframes:</strong> Foco na estrutura, layout, conteúdo. Sem detalhes visuais.</li>
+          <li><strong>Protótipos:</strong> Simulam a interação. Permitem testar fluxos e funcionalidades.</li>
+          <li>Ferramentas Comuns: Figma, Sketch, Adobe XD, Axure RP.</li>
+        </ul>
+      </div>
+
+       <div class="slide">
+        <h2><i class="fas fa-link"></i> A Conexão: Análise e Interação</h2>
+        <ul>
+          <li>Análise define <strong>O QUÊ</strong> o sistema deve fazer (requisitos).</li>
+          <li>Projeto de Interação define <strong>COMO</strong> o usuário vai interagir para fazer isso.</li>
+          <li>Trabalham juntos para garantir um sistema útil <strong>E</strong> usável.</li>
+          <li>Uma boa análise alimenta um bom design de interação.</li>
+        </ul>
+      </div>
+
+      <!-- ÚLTIMO SLIDE DE CONTEÚDO -->
+      <div class="slide">
+        <h2><i class="fas fa-flag-checkered"></i> Conclusão</h2>
+        <p>Entender as necessidades (Análise) e projetar interações eficazes (IxD) são chave para criar sistemas de sucesso que as pessoas realmente usem!</p>
+        <!-- Botões de ação no final -->
+        <button onclick="goToSlide(0)" class="return-btn"><i class="fas fa-home"></i> Voltar ao Início</button>
+        <button onclick="startQuiz()" class="quiz-start-btn">Iniciar Quiz <i class="fas fa-play"></i></button>
+      </div>
+
+      <!-- ========= SLIDES DO QUIZ E RESULTADO (Estrutura) ========= -->
+
+      <div class="slide" id="quiz-slide">
+        <h2><i class="fas fa-question"></i> Questionário - Análise e IxD</h2>
+        <!-- Formulário do Quiz será preenchido pelo JS -->
+        <form id="quiz-form" class="quiz-form"></form>
+      </div>
+
+      <div class="slide" id="result-slide">
+        <h2><i class="fas fa-chart-bar"></i> Resultado do Quiz</h2>
+        <!-- Resultados do Quiz serão inseridos aqui pelo JS -->
+        <div id="quiz-result"></div>
+      </div>
+
+      <!-- ========= Fim dos Slides ========= -->
+    </div> <!-- Fim do .carousel-track -->
+  </div> <!-- Fim do .carousel-container -->
+
+  <!-- ========= Botões de Navegação Fixos ========= -->
+  <div class="nav-buttons">
+    <button onclick="navigate(-1)" aria-label="Slide Anterior"><i class="fas fa-arrow-left"></i> Anterior</button>
+    <button onclick="navigate(1)" aria-label="Próximo Slide">Próximo <i class="fas fa-arrow-right"></i></button>
+  </div>
+
+  <!-- ========= Link para o JavaScript ========= -->
+  <script src="script.js"></script>
+</body>
+</html>
