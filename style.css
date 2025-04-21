@@ -1,0 +1,446 @@
+/* ==========================================================================
+   1. Variáveis e Reset Básico
+   ========================================================================== */
+:root {
+  --primary: #3498db;         /* Azul Principal */
+  --primary-dark: #2980b9;    /* Azul Escuro */
+  --success: #2ecc71;         /* Verde Sucesso */
+  --danger: #e74c3c;          /* Vermelho Erro */
+  --light: #ecf0f1;           /* Cinza Claro (Hover) */
+  --lighter: #f8f9fa;         /* Cinza Mais Claro (Fundo Body/Questão) */
+  --dark: #2c3e50;            /* Azul Escuro/Preto (Títulos/Nav) */
+  --text: #34495e;            /* Cinza Escuro (Texto Padrão) */
+  --white: #ffffff;           /* Branco */
+  --border-color: #bdc3c7;    /* Cinza Borda */
+
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais comum */
+  --nav-height: 60px;         /* Altura da barra de navegação */
+  --base-font-size: 100%;     /* Tamanho base para REM (geralmente 16px) */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--base-font-size);
+  scroll-behavior: smooth; /* Rolagem suave */
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--lighter);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-md);
+  padding-bottom: calc(var(--nav-height) + var(--space-md)); /* Espaço para nav fixa */
+  font-size: 1rem; /* Tamanho de fonte padrão do corpo */
+  overflow-x: hidden; /* Evita rolagem horizontal */
+}
+
+/* ==========================================================================
+   2. Layout Principal (Carrossel)
+   ========================================================================== */
+.carousel-container {
+  width: 100%;
+  max-width: 800px; /* Largura máxima */
+  height: 80vh; /* Altura relativa à viewport */
+  min-height: 500px; /* Altura mínima */
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: var(--white);
+  margin-bottom: var(--space-md);
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out; /* Animação de transição */
+}
+
+/* ==========================================================================
+   3. Slides (Estilos Gerais e de Conteúdo)
+   ========================================================================== */
+.slide {
+  flex: 0 0 100%; /* Ocupa 100% da largura do track */
+  width: 100%;
+  height: 100%;
+  padding: var(--space-lg) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden; /* Esconde overflow por padrão */
+}
+
+/* Títulos e Parágrafos nos Slides */
+.slide h1, .slide h2 {
+  color: var(--primary-dark);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.slide h1 { font-size: 2.2rem; }
+.slide h2 { font-size: 1.8rem; }
+
+.slide p {
+  margin-bottom: var(--space-md);
+  max-width: 600px;
+  font-size: 1.1rem;
+}
+
+/* Listas nos Slides */
+.slide ul {
+  text-align: left;
+  list-style-position: inside; /* Marcador dentro da caixa */
+  margin: var(--space-md) 0;
+  padding-left: var(--space-md);
+  max-width: 550px;
+  width: 90%; /* Ajusta à largura disponível */
+}
+.slide ul ul { /* Sub-listas */
+    margin-top: var(--space-sm);
+    margin-left: var(--space-md); /* Indentação */
+}
+.slide ul li {
+  margin-bottom: var(--space-sm);
+  font-size: 1.05rem;
+}
+.slide ul li strong { /* Destacar termos */
+    color: var(--primary-dark);
+}
+
+/* Slides específicos com Rolagem (Quiz e Resultado) */
+#quiz-slide,
+#result-slide {
+  justify-content: flex-start; /* Conteúdo começa do topo */
+  overflow-y: auto; /* Habilita rolagem vertical se necessário */
+  text-align: left; /* Alinha texto à esquerda nesses slides */
+  padding-bottom: calc(var(--nav-height) + var(--space-lg)); /* Espaço extra no fim */
+}
+#quiz-slide h2,
+#result-slide h2 {
+  text-align: center; /* Título centralizado */
+  width: 100%;
+  margin-bottom: var(--space-lg);
+}
+
+/* ==========================================================================
+   4. Estilos do Formulário do Quiz (#quiz-slide)
+   ========================================================================== */
+.quiz-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto; /* Centraliza */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg); /* Espaço entre as perguntas */
+}
+
+.question {
+  background: var(--lighter);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary);
+}
+
+/* Texto da Pergunta */
+.question p:first-of-type {
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--dark);
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+/* Container das Opções */
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+/* Labels das Opções */
+.quiz-options label {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+}
+.quiz-options label:hover {
+  background-color: var(--light);
+}
+
+/* Input Radio */
+.quiz-options input[type="radio"] {
+  margin-right: var(--space-md);
+  accent-color: var(--primary); /* Cor quando selecionado */
+  transform: scale(1.2); /* Tamanho maior */
+  flex-shrink: 0; /* Não encolher */
+}
+
+/* Botão Finalizar dentro do Quiz */
+#quiz-form button[type="submit"] {
+  margin-top: var(--space-lg);
+  align-self: center;
+  background-color: var(--success); /* Cor de sucesso */
+}
+#quiz-form button[type="submit"]:hover {
+    background-color: #27ae60; /* Verde mais escuro */
+}
+
+/* ==========================================================================
+   5. Estilos dos Resultados (#result-slide)
+   ========================================================================== */
+#quiz-result { /* Container principal dos resultados */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg) auto;
+}
+
+.results-container { /* Container gerado pelo JS se houver */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Bloco de cada questão no resultado */
+.question-result {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-left-width: 5px;
+}
+.question-result.correct {
+  border-left-color: var(--success);
+  background-color: #f0fff4;
+}
+.question-result.incorrect {
+  border-left-color: var(--danger);
+  background-color: #fff0f0;
+}
+
+.question-result p {
+  margin: 0.4rem 0;
+  font-size: 1rem; /* Ajuste fino se necessário */
+  line-height: 1.5;
+}
+.question-result p:first-of-type { /* Texto da pergunta */
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 1.1rem;
+}
+.question-result .user-answer { /* Resposta do usuário */
+    /* Pode adicionar estilo se quiser diferenciar */
+}
+.question-result .correct-answer { /* Resposta correta (mostrada se errou) */
+    font-weight: bold;
+}
+.question-result .result-status { /* "Acertou" / "Errou" */
+  font-weight: bold;
+  margin-top: var(--space-sm);
+  font-size: 1.1rem;
+}
+.question-result.correct .result-status { color: var(--success); }
+.question-result.incorrect .result-status { color: var(--danger); }
+.question-result .result-status i.fas { /* Ícones no status */
+    margin-right: var(--space-sm);
+}
+
+/* Bloco do Placar Final */
+.final-score {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--lighter);
+  border-radius: var(--radius-md);
+  text-align: center;
+  border-top: 3px solid var(--primary);
+  width: 100%; /* Ocupa largura do container pai (#quiz-result) */
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.final-score h3 {
+  color: var(--dark);
+  margin-bottom: var(--space-md);
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+.final-score button { /* Botão Recomeçar/Voltar */
+    margin-top: var(--space-md);
+    background-color: var(--primary);
+}
+.final-score button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* ==========================================================================
+   6. Botões Gerais e Navegação Fixa
+   ========================================================================== */
+button, .btn { /* Estilo base para todos os botões */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md) var(--space-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: var(--primary);
+  color: var(--white);
+  margin: var(--space-sm);
+  text-decoration: none;
+  min-height: 44px; /* Área de toque mínima */
+  line-height: 1; /* Alinhamento vertical */
+  -webkit-appearance: none; /* Remove estilos padrão do browser */
+  -moz-appearance: none;
+  appearance: none;
+}
+button:hover, .btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px); /* Efeito sutil de levantar */
+}
+button:active, .btn:active {
+    transform: translateY(0px); /* Retorna ao clicar */
+}
+
+/* Botões específicos nos slides de conteúdo */
+.quiz-start-btn { background-color: var(--success); }
+.quiz-start-btn:hover { background-color: #27ae60; }
+.return-btn { background-color: var(--dark); }
+.return-btn:hover { background-color: var(--text); }
+
+/* Barra de Navegação Fixa */
+.nav-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  background-color: rgba(255, 255, 255, 0.95); /* Fundo com leve transparência */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Acima do conteúdo */
+  height: var(--nav-height);
+  align-items: center;
+}
+.nav-buttons button {
+    background-color: var(--dark); /* Cor base da navegação */
+    min-width: 120px; /* Largura mínima para botões de nav */
+}
+.nav-buttons button:hover {
+    background-color: var(--text);
+}
+.nav-buttons button:disabled { /* Estilo para botões desabilitados */
+    background-color: #95a5a6; /* Cinza */
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none; /* Remove efeitos hover/active */
+}
+
+/* Ícones dentro dos botões */
+i.fas {
+  margin-right: var(--space-sm);
+}
+button i.fas {
+    line-height: 1; /* Alinhamento */
+}
+/* Ícone seta para direita */
+button i.fa-arrow-right {
+    margin-right: 0;
+    margin-left: var(--space-sm);
+}
+
+/* ==========================================================================
+   7. Responsividade (Ajustes para Telas Menores)
+   ========================================================================== */
+
+/* --- Telas Médias (Tablets, ~768px) --- */
+@media (max-width: 768px) {
+  body { font-size: 0.95rem; }
+  .carousel-container { height: 85vh; }
+  .slide { padding: var(--space-md); }
+
+  .slide h1 { font-size: 1.9rem; }
+  .slide h2 { font-size: 1.6rem; }
+  .slide p { font-size: 1rem; }
+  .slide ul li { font-size: 1rem; }
+
+  .quiz-form, #quiz-result, .final-score { max-width: 95%; }
+
+  .question p:first-of-type { font-size: 1.1rem; }
+  .quiz-options label { font-size: 0.95rem; }
+  .question-result p { font-size: 0.95rem; }
+  .question-result p:first-of-type { font-size: 1rem; }
+  .question-result .result-status { font-size: 1rem; }
+  .final-score h3 { font-size: 1.3rem; }
+
+  button, .btn {
+      padding: var(--space-sm) var(--space-md);
+      font-size: 0.9rem;
+      min-height: 42px;
+  }
+  .nav-buttons button { min-width: 100px; }
+  .nav-buttons { gap: var(--space-sm); }
+}
+
+/* --- Telas Pequenas (Smartphones, ~480px) --- */
+@media (max-width: 480px) {
+  body {
+      font-size: 0.9rem;
+      padding-left: var(--space-sm); /* Menos padding lateral no body */
+      padding-right: var(--space-sm);
+  }
+  .slide { padding: var(--space-sm) var(--space-md); } /* Menos padding vertical tbm */
+
+  .slide h1 { font-size: 1.6rem; }
+  .slide h2 { font-size: 1.4rem; }
+  .slide p { font-size: 0.9rem; }
+  .slide ul li { font-size: 0.9rem; }
+
+  .question p:first-of-type { font-size: 1rem; }
+  .quiz-options label { font-size: 0.9rem; padding: calc(var(--space-sm) * 0.9); }
+  .quiz-options input[type="radio"] { transform: scale(1.1); margin-right: var(--space-sm);}
+  .question-result p { font-size: 0.85rem; }
+  .question-result p:first-of-type { font-size: 0.9rem; }
+  .question-result .result-status { font-size: 0.9rem; }
+  .final-score h3 { font-size: 1.1rem; }
+
+  button, .btn {
+      font-size: 0.8rem; /* Botões ainda menores */
+      padding: var(--space-sm) var(--space-sm);
+      min-height: 38px;
+  }
+  .nav-buttons button { min-width: 80px; font-size: 0.75rem; }
+  .nav-buttons { height: calc(var(--nav-height) * 0.9); } /* Barra de nav menor */
+}
